@@ -30,6 +30,10 @@ public class Die {
         return sides;
     }
 
+    public int[] getCup(){
+        return dice;
+    }
+
     public String getDice()
     {
         return Arrays.toString(dice);

@@ -15,7 +15,6 @@ public class DiceGameViewer extends JFrame {
 
     public final Font ENDING_FONT = new Font("Sans-Serif", 1, 50);
 
-    DiceGame game;
 
     private final int HEADER_HEIGHT = 22;
     public final int WINDOW_WIDTH = 800;
@@ -31,14 +30,18 @@ public class DiceGameViewer extends JFrame {
     public final int IMAGE_SIZE = WINDOW_WIDTH / 10;
 
 
-    private final String[] AXIS_NAMES = {"0", "1", "2"};
 
-    private int[] markerX;
 
-    private int[] markerY;
+
+    DiceGame game;
+
+    private int turn;
+    private int currentCount;
+    private int currentNum;
 
 
     public DiceGameViewer(DiceGame game) {
+        turn = -1;
         this.game = game;
 
         PLAYER_SPACING = VISIBLE_HEIGHT / ((game.getPlayersCount() + 2) / 2);
@@ -61,6 +64,13 @@ public class DiceGameViewer extends JFrame {
     public void paint(Graphics g) {
         g.drawRect(0, 22, WINDOW_WIDTH, WINDOW_HEIGHT);
         drawBackground(g);
+        drawNames(g);
+        if (currentCount != -1){
+            drawBet(g);
+        }
+        if (turn != -1){
+            drawCup(g);
+        }
 //        for (Square[] row  : game.getBoard()){
 //            for (Square s : row){
 //                s.Draw(this, MARKER_SIZE, g);
@@ -95,17 +105,48 @@ public class DiceGameViewer extends JFrame {
                 g.drawImage(CUP_IMAGE, 0, STARTING_Y + PLAYER_SPACING * (i / 2), IMAGE_SIZE,IMAGE_SIZE, this);
                 g.drawString(game.getPlayers()[i].getName(), IMAGE_SIZE, STARTING_Y + IMAGE_SIZE / 2 + PLAYER_SPACING * (i / 2));
                 g.drawString("Dice: " + game.getPlayers()[i].getRolls(), IMAGE_SIZE, STARTING_Y + IMAGE_SIZE + PLAYER_SPACING * (i / 2));
+                g.drawString("Wins: " + game.getPlayers()[i].getScore(),0, STARTING_Y + + IMAGE_SIZE * 2 + PLAYER_SPACING * (i / 2));
             }
             else {
                 g.drawImage(CUP_IMAGE, WINDOW_WIDTH - IMAGE_SIZE, STARTING_Y + PLAYER_SPACING * (i / 2), IMAGE_SIZE, IMAGE_SIZE, this);
                 g.drawString(game.getPlayers()[i].getName(), WINDOW_WIDTH - IMAGE_SIZE - HEADER_FONT.getSize() * game.getPlayers()[i].getName().length() / 2, STARTING_Y + + IMAGE_SIZE / 2 + PLAYER_SPACING * (i / 2));
                 g.drawString("Dice: " + game.getPlayers()[i].getRolls(), WINDOW_WIDTH - IMAGE_SIZE - HEADER_FONT.getSize() * 4, STARTING_Y + + IMAGE_SIZE + PLAYER_SPACING * (i / 2));
+                g.drawString("Wins: " + game.getPlayers()[i].getScore(),WINDOW_WIDTH - HEADER_FONT.getSize() * 4, STARTING_Y + + IMAGE_SIZE * 2 + PLAYER_SPACING * (i / 2));
             }
+
         }
     }
+    public void setTurn(int turn){
+        this.turn = turn;
+    }
+    public void setCurrentCount(int currentCount) {
+        this.currentCount = currentCount;
+    }
+
+    public void setCurrentNum(int currentNum) {
+        this.currentNum = currentNum;
+    }
+
     public void drawBet(Graphics g){
-
-
+        int startingPoint = WINDOW_WIDTH / 2 - IMAGE_SIZE * currentCount / 2;
+        for (int i = 0; i < currentCount; i++){
+            g.drawImage(diceImages[currentNum - 1], startingPoint + IMAGE_SIZE * i, STARTING_Y + VISIBLE_HEIGHT / 3 + IMAGE_SIZE / 2, IMAGE_SIZE, IMAGE_SIZE, this);
+        }
+    }
+    public void drawCup(Graphics g){
+        g.setFont(HEADER_FONT);
+        g.drawString("Player: " + game.getPlayers()[turn].getName() + "'s Turn", WINDOW_WIDTH / 2 - (HEADER_FONT.getSize() * ((15 + game.getPlayers()[turn].getName().length()) / 2) / 2), STARTING_Y + VISIBLE_HEIGHT * 2 / 3);
+        int order = 0;
+        int startingPoint = WINDOW_WIDTH / 2 - IMAGE_SIZE * game.getPlayers()[turn].getRolls() / 2;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < game.getPlayers()[turn].getCup()[i]; j++){
+                g.drawImage(diceImages[i], startingPoint + order * IMAGE_SIZE, STARTING_Y + VISIBLE_HEIGHT * 2 / 3 + IMAGE_SIZE / 2, IMAGE_SIZE, IMAGE_SIZE, this);
+                order++;
+            }
+            if (order == game.getPlayers()[turn].getRolls()){
+                return;
+            }
+        }
     }
 }
 

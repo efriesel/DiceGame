@@ -51,6 +51,9 @@ public class Player {
     {
         dice.rolls();
     }
+    public int[] getCup(){
+        return dice.getCup();
+    }
     public int countInt(int digit)
     {
         return dice.countInt(digit);

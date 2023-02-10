@@ -10,6 +10,8 @@ public class Round {
     private boolean winner = false;
     private int currentCount;
     private int currentNum;
+
+    private int turn;
     private int winningPlayer;
     private final int playersCount;
     private boolean win;
@@ -22,6 +24,7 @@ public class Round {
         this.window = window;
         this.players = players;
         this.playersCount = playersCount;
+        turn = -1;
     }
     //getter functions for winning player name and roll count
     public String getWinner()
@@ -33,13 +36,6 @@ public class Round {
         return winnerRolls;
     }
 
-    public int getCurrentCount() {
-        return currentCount;
-    }
-
-    public int getCurrentNum() {
-        return currentNum;
-    }
 
     //this function will play a round and select a winner for the given round
     public void playRound()
@@ -50,6 +46,12 @@ public class Round {
         int remainingPlayers = playersCount;
         while (!winner)
         {
+            turn = -1;
+            window.setTurn(turn);
+            currentCount = -1;
+            window.setCurrentCount(currentCount);
+            currentNum = -1;
+            window.repaint();
             for (int i = 0; i < playersCount; i++)
             {
                 if (players[i].getRolls() == 0)
@@ -174,7 +176,7 @@ public class Round {
         currentCount = 0;
         currentNum = 0;
         win = false;
-        int turn = 0;
+        turn = 0;
         int next = 1;
         while (!win)
         {
@@ -189,11 +191,17 @@ public class Round {
             //players may only bet or call if they are not eliminated
             if (!in[turn].getElim())
             {
+                window.setTurn(turn);
+                window.repaint();
                 inputBet(players[turn]);
                 if (!in[next].getElim())
                 {
                     //gives the current bet to remind players
                     System.out.println("Current bet, " + in[turn].getName() + " says there are " + currentCount + " dice with the number " + currentNum);
+                    window.setTurn(next);
+                    window.setCurrentCount(currentCount);
+                    window.setCurrentNum(currentNum);
+                    window.repaint();
                     inputGuess(in[turn], in[next], in);
                 }
                 turn++;
