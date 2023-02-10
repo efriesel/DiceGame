@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf95b0c1-7434-4041-bad6-a5dd3530171f" name="Changes" comment="yes">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DiceGame.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Background.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Cup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DiceGameViewer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Die.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Round.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiceGameViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiceGameViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Round.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Round.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +50,14 @@
       <option name="presentableId" value="Default" />
       <updated>1675789043957</updated>
     </task>
+    <task id="LOCAL-00001" summary="yes">
+      <created>1675896801482</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675896801482</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

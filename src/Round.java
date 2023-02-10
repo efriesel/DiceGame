@@ -32,6 +32,15 @@ public class Round {
     {
         return winnerRolls;
     }
+
+    public int getCurrentCount() {
+        return currentCount;
+    }
+
+    public int getCurrentNum() {
+        return currentNum;
+    }
+
     //this function will play a round and select a winner for the given round
     public void playRound()
     {
@@ -100,7 +109,6 @@ public class Round {
         System.out.print("\033[H\033[2J");
         System.out.flush();
         s.nextLine();
-        return;
     }
     //this function will input a bet from a player and alter the current variables
     public void inputBet(Player in)

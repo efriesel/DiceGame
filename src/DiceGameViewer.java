@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.text.AttributedCharacterIterator;
+
 //https://www.dreamstime.com/set-dice-icon-traditional-die-six-faces-cube-marked-different-numbers-dots-pips-to-simple-flat-style-vector-image202612165#_
 public class DiceGameViewer extends JFrame {
 
@@ -83,17 +85,27 @@ public class DiceGameViewer extends JFrame {
         g.fillRect(0, STARTING_Y, WINDOW_WIDTH, VISIBLE_HEIGHT);
         g.setColor(Color.BLACK);
         g.drawString("Current Bet", WINDOW_WIDTH / 3, STARTING_Y + VISIBLE_HEIGHT / 3);
+        drawNames(g);
     }
 
-    public void drawNames(Graphics g, int turn){
-        for (int i = 0; i < game.getPlayersCount() - 1; i++){
+    public void drawNames(Graphics g){
+        g.setFont(HEADER_FONT);
+        for (int i = 0; i < game.getPlayersCount(); i++){
             if (i % 2 == 0){
-                g.drawImage(CUP_IMAGE, 0, STARTING_Y + PLAYER_SPACING * i, IMAGE_SIZE,IMAGE_SIZE, this);
+                g.drawImage(CUP_IMAGE, 0, STARTING_Y + PLAYER_SPACING * (i / 2), IMAGE_SIZE,IMAGE_SIZE, this);
+                g.drawString(game.getPlayers()[i].getName(), IMAGE_SIZE, STARTING_Y + IMAGE_SIZE / 2 + PLAYER_SPACING * (i / 2));
+                g.drawString("Dice: " + game.getPlayers()[i].getRolls(), IMAGE_SIZE, STARTING_Y + IMAGE_SIZE + PLAYER_SPACING * (i / 2));
             }
             else {
-                g.drawImage(CUP_IMAGE, WINDOW_WIDTH - PLAYER_SPACING, STARTING_Y + PLAYER_SPACING * i, IMAGE_SIZE, IMAGE_SIZE, this);
+                g.drawImage(CUP_IMAGE, WINDOW_WIDTH - IMAGE_SIZE, STARTING_Y + PLAYER_SPACING * (i / 2), IMAGE_SIZE, IMAGE_SIZE, this);
+                g.drawString(game.getPlayers()[i].getName(), WINDOW_WIDTH - IMAGE_SIZE - HEADER_FONT.getSize() * game.getPlayers()[i].getName().length() / 2, STARTING_Y + + IMAGE_SIZE / 2 + PLAYER_SPACING * (i / 2));
+                g.drawString("Dice: " + game.getPlayers()[i].getRolls(), WINDOW_WIDTH - IMAGE_SIZE - HEADER_FONT.getSize() * 4, STARTING_Y + + IMAGE_SIZE + PLAYER_SPACING * (i / 2));
             }
         }
+    }
+    public void drawBet(Graphics g){
+
+
     }
 }
 
