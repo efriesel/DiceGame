@@ -76,6 +76,10 @@ public class Round {
                 gameWinner = players[winningPlayer].getName();
                 winnerRolls = players[winningPlayer].getRolls();
                 players[winningPlayer].setScore((players[winningPlayer].getScore()) + 1);
+                window.setWin(true);
+                window.setWinner(players[winningPlayer]);
+                window.repaint();
+                s.nextLine();
             }
             else
             {
