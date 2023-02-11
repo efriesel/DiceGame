@@ -54,6 +54,7 @@ public class DiceGameViewer extends JFrame {
 
     /**
      *in the paint function, the Names will always be drawn, however, each time there is a bet or a player is up to bet or call, the drawBet() or drawCup() functions are called
+     * in addition, the win string should be drawn in the event of a win
      * @param g the specified Graphics window
      */
     public void paint(Graphics g) {
