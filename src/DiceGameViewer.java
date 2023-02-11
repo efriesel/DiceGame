@@ -171,6 +171,11 @@ public class DiceGameViewer extends JFrame {
             }
         }
     }
+
+    /**
+     * this function will draw who wins the round in the event of a win
+     * @param g
+     */
     public void drawEnding(Graphics g){
         g.setFont(ENDING_FONT);
         g.drawString(winner.getName() + " Wins the Round", WINDOW_WIDTH / 2 - ENDING_FONT.getSize() * (((15 + winner.getName().length()) / 2) / 2), STARTING_Y + VISIBLE_HEIGHT / 3 - ENDING_FONT.getSize());
